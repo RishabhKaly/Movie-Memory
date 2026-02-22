@@ -15,11 +15,16 @@ Movie Memory is a small Next.js app that authenticates with Google, collects a u
 ---
 
 
-```md
-## Setup Instructions
-
-### 1) Clone the repository
-
-```bash
+### 1) Clone and install
+bash
 git clone https://github.com/RishabhKaly/Movie-Memory.git
 cd Movie-Memory
+---
+### 2) Install dependecies
+npm install
+
+---
+### 3) Create environment variables:
+touch .env
+
+
