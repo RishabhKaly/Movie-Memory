@@ -1,6 +1,6 @@
 
 
-# Movie Memory — Full Stack Take-Home
+# Movie Memory — SWE Take-Home Exercise (Full-Stack) for Scowtt
 
 Movie Memory is a small Next.js app that authenticates with Google, collects a user’s favorite movie, and generates “fun facts” using the OpenAI API. Facts are stored in Postgres and served with correctness guarantees (60s caching + burst/idempotency protection).
 
