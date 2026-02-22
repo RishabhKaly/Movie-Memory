@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   const body = await req.json()
   let movie = body.movie?.trim()
 
-  // ✅ Server-side validation
+  //  Server side validation
   if (!movie || movie.length < 2) {
     return NextResponse.json(
       { error: "Movie name too short" },

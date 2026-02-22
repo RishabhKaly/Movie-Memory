@@ -8,7 +8,7 @@ import FactSection from "./fact-section"
 export default async function Dashboard() {
   const session = await getServerSession(authOptions)
 
-  // 🔒 Protect route
+  //  Protect route
   if (!session?.user?.email) {
     redirect("/")
   }

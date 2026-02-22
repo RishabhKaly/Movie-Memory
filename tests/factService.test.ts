@@ -1,4 +1,4 @@
-// Covers:
+// Tests voer:
 // 1) 60s cache window: same user gets cached fact in same minute window
 // 2) Authorization isolation: facts are scoped to userId (user B can't see user A facts)
 
@@ -24,7 +24,7 @@ describe("Fact generation + auth isolation", () => {
   }
 
   beforeEach(async () => {
-    // Clean only what we create (safe)
+    // Clean only what is created
     await prisma.fact.deleteMany({
       where: { userId: { in: [userA.id, userB.id] } },
     })
@@ -32,7 +32,7 @@ describe("Fact generation + auth isolation", () => {
       where: { id: { in: [userA.id, userB.id] } },
     })
 
-    // Create test users (required for FK)
+    // Create test users 
     await prisma.user.create({
       data: {
         id: userA.id,
@@ -63,7 +63,7 @@ describe("Fact generation + auth isolation", () => {
     expect(second.fact).toBe(first.fact)
   })
 
-  // ✅ STEP 4: Authorization / isolation
+  //  Authorization / isolation
   it("authorization: user B cannot fetch user A's facts", async () => {
     // Generate fact for A
     await generateFactForUser(userA)

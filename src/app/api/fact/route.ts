@@ -28,7 +28,7 @@ export async function POST() {
     )
   }
 
-  // 🧠 STEP 1: Get most recent fact for this user
+  //  Get most recent fact for this user
   const latestFact = await prisma.fact.findFirst({
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
@@ -40,7 +40,7 @@ export async function POST() {
     const ageInSeconds =
       (now.getTime() - latestFact.createdAt.getTime()) / 1000
 
-    // ✅ STEP 2: If < 60 seconds old → return cached
+    //   If < 60 seconds old  return cached
     if (ageInSeconds < 60) {
       return NextResponse.json({
         fact: latestFact.content,
@@ -49,29 +49,8 @@ export async function POST() {
     }
   }
 
-  // 🔥 STEP 3: Generate new fact
-  // let fact: string | null = null
-
-  // try {
-  //   const completion = await openai.chat.completions.create({
-  //     model: "gpt-4o-mini",
-  //     messages: [
-  //       {
-  //         role: "user",
-  //         content: `Give me one short fun fact about the movie "${user.favoriteMovie}".`,
-  //       },
-  //     ],
-  //   })
-
-  //   fact = completion.choices[0].message.content?.trim() || null
-  // } catch (error) {
-  //   console.error("OpenAI error:", error)
-  //   return NextResponse.json(
-  //     { error: "Failed to generate fact" },
-  //     { status: 500 }
-  //   )
-  // }
-  // 🔥 Generate new fact
+  
+  //  Generate new fact
 let fact: string | null = null
 
 try {
@@ -89,7 +68,7 @@ try {
 } catch (error) {
   console.error("OpenAI error:", error)
 
-  // 🛟 Fallback to most recent cached fact
+  //  Fallback to most recent cached fact
   const fallbackFact = await prisma.fact.findFirst({
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
@@ -103,7 +82,7 @@ try {
     })
   }
 
-  // ❌ No cached fact exists
+  //  No cached fact exists
   return NextResponse.json(
     {
       error:
@@ -119,12 +98,12 @@ try {
       { status: 500 }
     )
   }
-  // ✅ 60-second window calculation
+  //  60 second window calculation
   const windowStart: Date = new Date(
     Math.floor(Date.now() / 60000) * 60000
   )
 
-  // 💾 STEP 4: Store new fact
+  //  STEP 4: Store new fact
   await prisma.fact.create({
     data: {
       content: fact,
