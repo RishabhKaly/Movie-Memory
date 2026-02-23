@@ -483,7 +483,7 @@ Originally I was thinking of choosing Variant B since I had experience from my p
     For this take home assignment I emphasized clarity and correctness rather than overengineering features.
 
 ---
-## What I would Improve in 2 more Hours
+## What I would improve in given more time
 1. **API Rate Limiting**
 
     * Add per-user rate limiting fact generation
