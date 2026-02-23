@@ -209,8 +209,6 @@ npm run test:run
 
  1. **System Overview**
 
-    Movie Memory is a full-stack Next.js application that authenticates users via Google OAuth, stores user preferences in Postgres, and generates fun movie facts using the OpenAI API.
-
     The system is designed around three core principles:
 
     *   Correctness under concurrency
@@ -256,7 +254,7 @@ npm run test:run
 ---
 3.  **Data Model**
     
-    *User Model*
+    **User Model**
 
     Stores:
 
@@ -405,15 +403,8 @@ npm run test:run
 
 ---
 
-10. **Design Philosophy**
 
-    The architecture prioritizes:
 
-    * Deterministic behavior/outcomes
-    * Database-enforced guarantees
-    * Simple logic
-    * Minimal but meaningful test coverage
----
 ## Variant Reasoning (Variant A)
 
 Originally I was thinking of choosing Variant B since I had experience from my prior personal projects working with the Frontend and implementing API endpoints and client-side caching but I ended up choosing Variant A because I had never implemented Burst/ Idempotency protection and wanted to learn more about it. Variant A also stood out to me because of its deterministic behavior by emphasizing backend correctness.
@@ -464,15 +455,13 @@ Originally I was thinking of choosing Variant B since I had experience from my p
 
     This approach scales better than an in-memory lock, which would fail in multi-instance deployments.
 
-3. **On-Demand Fact Generation**
+3. **On Demand Fact Generation**
 
     Facts are generated only when requested.
 
-    Benefits:
+    Benefit:
 
     * Minimal unnecessary OpenAI calls
-
-    *Simple model
 
     Tradeoffs:
 
@@ -483,7 +472,7 @@ Originally I was thinking of choosing Variant B since I had experience from my p
     For this take home assignment I emphasized clarity and correctness rather than overengineering features.
 
 ---
-## What I would improve in given more time
+## What I would improve if given more time
 1. **API Rate Limiting**
 
     * Add per-user rate limiting fact generation
