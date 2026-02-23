@@ -12,7 +12,7 @@ Movie Memory is a small Next.js application that authenticates with Google, coll
 - OpenAI API
 
 ---
-
+## Setup Instructions
 
 ### 1) Clone Repo
 ```bash
@@ -386,7 +386,7 @@ npm run test:run
 
     There is no API that accepts a userId from the client.
 
-    Minimal backend tests verify:
+    Backend tests verify:
 
     * 60-second caching behavior
 
@@ -396,9 +396,6 @@ npm run test:run
 
 9. **Separation of Concerns**
 
-    * API routes handle HTTP + session validation.
-
-    * Business logic lives in service-level functions.
 
     * Prisma handles database abstraction.
 
@@ -414,7 +411,7 @@ npm run test:run
 
     * Deterministic behavior/outcomes
     * Database-enforced guarantees
-    * Simple, explainable logic
+    * Simple logic
     * Minimal but meaningful test coverage
 ---
 ## Variant Reasoning (Variant A)
